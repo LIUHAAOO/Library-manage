@@ -37,7 +37,9 @@ CREATE TABLE borrows (
 INSERT INTO students (sname, snum, password)
 VALUES ('root', 123, '123');
 ```
-4.将`release`中的jar文件取出放在桌面或者任意目录下，控制台中cd到放置的目录，java -jar+{jar文件名}即可一键运行：
+4.在IDEA中运行，将zip下载到本地后解压，在IDEA中打开文件夹
+
+5.如果日志的默认输出位置是桌面，如果需要放置到额外的位置请自行修改`resourses`中的log4j2.xml，java版本默认使用最新版本即可
+
+6.将`release`中的jar文件取出放在桌面或者任意目录下，控制台中cd到放置的目录，java -jar+{jar文件名}即可一键运行：
 ![Pasted image 20240816165204](https://github.com/user-attachments/assets/fe978617-d93e-4243-bc71-e5a6437d0198)
-5.也可以在IDEA中运行，将zip下载到本地后解压，在IDEA中打开即可
-6.关于日志文件的放置位置，

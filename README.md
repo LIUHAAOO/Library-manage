@@ -42,4 +42,28 @@ VALUES ('root', 123, '123');
 5.如果日志的默认输出位置是桌面，如果需要放置到额外的位置请自行修改`resourses`中的log4j2.xml，java版本默认使用最新版本即可
 
 6.将`release`中的jar文件取出放在桌面或者任意目录下，控制台中cd到放置的目录，java -jar+{jar文件名}即可一键运行：
-![Pasted image 20240816165204](https://github.com/user-attachments/assets/fe978617-d93e-4243-bc71-e5a6437d0198)
+```bush
+Microsoft Windows [版本 10.0.22631.4037]
+(c) Microsoft Corporation。保留所有权利。
+
+C:\Users\LIU>cd Desktop
+
+C:\Users\LIU\Desktop>java -jar Library-1.1-SNAPSHOT-jar-with-dependencies.jar
+正在连接数据库...
+成功连接到数据库！
+请输入用户名：
+root
+请输入用户密码：
+123
+欢迎你root
+=======主菜单========
+======1.增加书籍=====
+======2.增加学生=====
+======3.查询书籍=====
+======4.借阅书籍=====
+======5.归还书籍=====
+======0.退   出======
+```
+这就代表着登陆成功！
+
+7.查看日志，日志一般在这个目录：C:\Users\LIU\logs，其中'LIU'应该替换为你的计算机名字

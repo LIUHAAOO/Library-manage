@@ -1,7 +1,43 @@
 # Library-manage
 一个基于Maven构建的简易的图书管理系统，有日志功能
-需要确保使用MySql数据库，并且创建了一个Library数据库，里面有三张表：students,books,borrows,具体的表如下：
-![截图 2024-08-24 22-54-59](https://github.com/user-attachments/assets/5e5a1ba5-b44d-48a9-a7ae-874b2cd0d706)
-![截图 2024-08-24 22-55-03](https://github.com/user-attachments/assets/8f973337-a613-4202-bbec-5509e18872a8)
-![截图 2024-08-24 22-55-08](https://github.com/user-attachments/assets/8358d7e8-5c66-4b6b-857f-4f98a71f746a)
-代码中用户名是root，密码是123456,可自行配置
+### 使用说明：
+1.登录Mysql，由于配置文件中的用户名是root，密码是123456,数据库名是`Library`，根据上述信息注册数据库
+
+2.创建三张表如下：
+```mysql
+CREATE TABLE books (
+    bid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    tittle VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    inf VARCHAR(255)
+);
+```
+
+```mysql
+CREATE TABLE students (
+    sid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    sname VARCHAR(255) NOT NULL,
+    snum INT NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+```
+```mysql
+CREATE TABLE borrows (
+    borrow_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    book_id INT NOT NULL UNIQUE,
+    borrow_date DATE,
+    return_date DATE,
+    FOREIGN KEY (student_id) REFERENCES students(sid),
+    FOREIGN KEY (book_id) REFERENCES books(bid)
+);
+```
+3.由于一开始数据库中学生信息为空，所以增加一个学生信息用来登录：
+```mysql
+INSERT INTO students (sname, snum, password)
+VALUES ('root', 123, '123');
+```
+4.将`release`中的jar文件取出放在桌面或者任意目录下，控制台中cd到放置的目录，java -jar+{jar文件名}即可一键运行：
+![Pasted image 20240816165204](https://github.com/user-attachments/assets/fe978617-d93e-4243-bc71-e5a6437d0198)
+5.也可以在IDEA中运行，将zip下载到本地后解压，在IDEA中打开即可
+6.关于日志文件的放置位置，

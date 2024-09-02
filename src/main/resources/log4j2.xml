@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Properties>
-        <!-- 定义通用的用户主目录变量 -->
-        <Property name="userHome">${sys:user.home}</Property>
-
-        <!-- 根据操作系统选择日志路径 -->
-        <Property name="logPath">
-            <!-- 如果操作系统是 Windows，使用 Desktop -->
-            <Script language="JavaScript">
-                <![CDATA[
-                var osName = java.lang.System.getProperty("os.name").toLowerCase();
-                if (osName.contains("win")) {
-                    logPath = userHome + "/Desktop/logs/app.log";
-                } else {
-                    logPath = userHome + "/桌面/logs/app.log";
-                }
-                logPath;
-                ]]>
-            </Script>
-        </Property>
+        <!-- 直接设置路径进行测试 -->
+        <Property name="logPath">${sys:user.home}/logs/app.log</Property>
     </Properties>
 
     <Appenders>
-        <!-- 使用选择的日志路径 -->
         <File name="LogFile" fileName="${logPath}">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n" />
         </File>
     </Appenders>
-    
+
     <Loggers>
         <Root level="info">
             <AppenderRef ref="LogFile" />
